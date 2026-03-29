@@ -53,7 +53,7 @@
 
     <!-- Stats Cards -->
     <div class="stats-grid">
-      <div class="stat-card stat-card--normal">
+      <div class="stat-card stat-card--normal speed">
         <div class="stat-glow"></div>
         <div class="stat-header">
           <span class="stat-label">Speed</span>
@@ -68,7 +68,7 @@
         <span class="stat-trend stat-trend--stable">&#8594; Stable</span>
       </div>
 
-      <div class="stat-card stat-card--normal">
+      <div class="stat-card stat-card--normal rpm">
         <div class="stat-glow"></div>
         <div class="stat-header">
           <span class="stat-label">RPM</span>
@@ -83,7 +83,7 @@
         <span class="stat-trend stat-trend--up">&#8593; Rising</span>
       </div>
 
-      <div class="stat-card stat-card--warning">
+      <div class="stat-card stat-card--warning temp">
         <div class="stat-glow"></div>
         <div class="stat-header">
           <span class="stat-label">Engine Temp</span>
@@ -98,7 +98,7 @@
         <span class="stat-trend stat-trend--up">&#8593; Rising</span>
       </div>
 
-      <div class="stat-card stat-card--normal">
+      <div class="stat-card stat-card--normal fuel">
         <div class="stat-glow"></div>
         <div class="stat-header">
           <span class="stat-label">Fuel Level</span>
@@ -131,54 +131,7 @@
           </div>
         </div>
         <div class="chart-container">
-          <svg class="chart-svg" viewBox="0 0 700 280" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="speedGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#4d7cff;stop-opacity:0.4"/>
-                <stop offset="100%" style="stop-color:#4d7cff;stop-opacity:0"/>
-              </linearGradient>
-              <linearGradient id="rpmGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#a855f7;stop-opacity:0.3"/>
-                <stop offset="100%" style="stop-color:#a855f7;stop-opacity:0"/>
-              </linearGradient>
-            </defs>
-            <!-- Grid -->
-            <g class="chart-grid">
-              <line x1="50" y1="50" x2="680" y2="50"/>
-              <line x1="50" y1="100" x2="680" y2="100"/>
-              <line x1="50" y1="150" x2="680" y2="150"/>
-              <line x1="50" y1="200" x2="680" y2="200"/>
-            </g>
-            <!-- Y-axis labels -->
-            <g class="chart-labels">
-              <text x="40" y="55" text-anchor="end">100</text>
-              <text x="40" y="105" text-anchor="end">75</text>
-              <text x="40" y="155" text-anchor="end">50</text>
-              <text x="40" y="205" text-anchor="end">25</text>
-              <text x="40" y="245" text-anchor="end">0</text>
-            </g>
-            <!-- X-axis labels -->
-            <g class="chart-labels">
-              <text x="70" y="265">00:00</text>
-              <text x="180" y="265">00:15</text>
-              <text x="290" y="265">00:30</text>
-              <text x="400" y="265">00:45</text>
-              <text x="510" y="265">01:00</text>
-              <text x="620" y="265">01:15</text>
-            </g>
-            <!-- Speed Area -->
-            <path class="chart-area--speed" d="M70,170 L127,130 L184,100 L241,85 L298,115 L355,145 L412,60 L469,75 L526,125 L583,105 L640,90 L640,240 L70,240 Z"/>
-            <!-- RPM Area -->
-            <path class="chart-area--rpm" d="M70,185 L127,155 L184,130 L241,110 L298,135 L355,160 L412,80 L469,95 L526,150 L583,125 L640,115 L640,240 L70,240 Z"/>
-            <!-- Speed Line -->
-            <path class="chart-line chart-line--speed" d="M70,170 L127,130 L184,100 L241,85 L298,115 L355,145 L412,60 L469,75 L526,125 L583,105 L640,90"/>
-            <!-- RPM Line -->
-            <path class="chart-line chart-line--rpm" d="M70,185 L127,155 L184,130 L241,110 L298,135 L355,160 L412,80 L469,95 L526,150 L583,125 L640,115"/>
-            <!-- Data points -->
-            <circle class="chart-dot chart-dot--speed" cx="412" cy="60"/>
-            <circle class="chart-dot chart-dot--speed" cx="640" cy="90"/>
-            <circle class="chart-dot chart-dot--rpm" cx="412" cy="80"/>
-          </svg>
+          <canvas id="speedChart"></canvas>
         </div>
       </div>
 
@@ -286,5 +239,8 @@
   <footer class="footer">
     <p>FleetX Dashboard &copy; 2026 - Vehicle Fleet Management System</p>
   </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="Script.js"></script>
 </body>
 </html>
