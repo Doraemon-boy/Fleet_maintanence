@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FleetX Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="bg-wrapper">
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+  </div>
+  <div class="grid-pattern"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <div class="nav-logo">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="nav-title">
+          <h1>FleetX Dashboard</h1>
+          <p>Vehicle Telemetry System</p>
+        </div>
+      </div>
+      <div class="nav-right">
+        <div class="status-badge">
+          <div class="status-indicator">
+            <div class="status-dot"></div>
+            <span class="status-text">Connected</span>
+          </div>
+          <div class="status-divider"></div>
+          <span class="status-time">14:32:18</span>
+        </div>
+        <button class="nav-btn">
+          <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="badge">4</span>
+        </button>
+        <button class="nav-btn">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main">
+    <h2 class="section-title">Vehicle Telemetry</h2>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card stat-card--normal">
+        <div class="stat-glow"></div>
+        <div class="stat-header">
+          <span class="stat-label">Speed</span>
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">
+          <span class="stat-number">78</span>
+          <span class="stat-unit">km/h</span>
+        </div>
+        <span class="stat-trend stat-trend--stable">&#8594; Stable</span>
+      </div>
+
+      <div class="stat-card stat-card--normal">
+        <div class="stat-glow"></div>
+        <div class="stat-header">
+          <span class="stat-label">RPM</span>
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">
+          <span class="stat-number">3,400</span>
+          <span class="stat-unit">rpm</span>
+        </div>
+        <span class="stat-trend stat-trend--up">&#8593; Rising</span>
+      </div>
+
+      <div class="stat-card stat-card--warning">
+        <div class="stat-glow"></div>
+        <div class="stat-header">
+          <span class="stat-label">Engine Temp</span>
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">
+          <span class="stat-number">92</span>
+          <span class="stat-unit">°C</span>
+        </div>
+        <span class="stat-trend stat-trend--up">&#8593; Rising</span>
+      </div>
+
+      <div class="stat-card stat-card--normal">
+        <div class="stat-glow"></div>
+        <div class="stat-header">
+          <span class="stat-label">Fuel Level</span>
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 22V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/><path d="M15 22V10a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M18 22v-6"/><path d="M3 22h12"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">
+          <span class="stat-number">45</span>
+          <span class="stat-unit">%</span>
+        </div>
+        <span class="stat-trend stat-trend--down">&#8595; Falling</span>
+      </div>
+    </div>
+
+    <!-- Chart & Map -->
+    <div class="content-grid">
+      <!-- Speed Chart -->
+      <div class="panel">
+        <div class="panel-glow panel-glow--bl"></div>
+        <div class="panel-glow panel-glow--tr"></div>
+        <div class="panel-header">
+          <div>
+            <h3 class="panel-title">Speed & RPM Over Time</h3>
+            <p class="panel-subtitle">Real-time telemetry data</p>
+          </div>
+          <div class="panel-legend">
+            <div class="legend-item"><div class="legend-dot legend-dot--blue"></div>Speed (km/h)</div>
+            <div class="legend-item"><div class="legend-dot legend-dot--purple"></div>RPM</div>
+          </div>
+        </div>
+        <div class="chart-container">
+          <svg class="chart-svg" viewBox="0 0 700 280" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="speedGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#4d7cff;stop-opacity:0.4"/>
+                <stop offset="100%" style="stop-color:#4d7cff;stop-opacity:0"/>
+              </linearGradient>
+              <linearGradient id="rpmGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#a855f7;stop-opacity:0.3"/>
+                <stop offset="100%" style="stop-color:#a855f7;stop-opacity:0"/>
+              </linearGradient>
+            </defs>
+            <!-- Grid -->
+            <g class="chart-grid">
+              <line x1="50" y1="50" x2="680" y2="50"/>
+              <line x1="50" y1="100" x2="680" y2="100"/>
+              <line x1="50" y1="150" x2="680" y2="150"/>
+              <line x1="50" y1="200" x2="680" y2="200"/>
+            </g>
+            <!-- Y-axis labels -->
+            <g class="chart-labels">
+              <text x="40" y="55" text-anchor="end">100</text>
+              <text x="40" y="105" text-anchor="end">75</text>
+              <text x="40" y="155" text-anchor="end">50</text>
+              <text x="40" y="205" text-anchor="end">25</text>
+              <text x="40" y="245" text-anchor="end">0</text>
+            </g>
+            <!-- X-axis labels -->
+            <g class="chart-labels">
+              <text x="70" y="265">00:00</text>
+              <text x="180" y="265">00:15</text>
+              <text x="290" y="265">00:30</text>
+              <text x="400" y="265">00:45</text>
+              <text x="510" y="265">01:00</text>
+              <text x="620" y="265">01:15</text>
+            </g>
+            <!-- Speed Area -->
+            <path class="chart-area--speed" d="M70,170 L127,130 L184,100 L241,85 L298,115 L355,145 L412,60 L469,75 L526,125 L583,105 L640,90 L640,240 L70,240 Z"/>
+            <!-- RPM Area -->
+            <path class="chart-area--rpm" d="M70,185 L127,155 L184,130 L241,110 L298,135 L355,160 L412,80 L469,95 L526,150 L583,125 L640,115 L640,240 L70,240 Z"/>
+            <!-- Speed Line -->
+            <path class="chart-line chart-line--speed" d="M70,170 L127,130 L184,100 L241,85 L298,115 L355,145 L412,60 L469,75 L526,125 L583,105 L640,90"/>
+            <!-- RPM Line -->
+            <path class="chart-line chart-line--rpm" d="M70,185 L127,155 L184,130 L241,110 L298,135 L355,160 L412,80 L469,95 L526,150 L583,125 L640,115"/>
+            <!-- Data points -->
+            <circle class="chart-dot chart-dot--speed" cx="412" cy="60"/>
+            <circle class="chart-dot chart-dot--speed" cx="640" cy="90"/>
+            <circle class="chart-dot chart-dot--rpm" cx="412" cy="80"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="panel">
+        <div class="panel-glow panel-glow--bl"></div>
+        <div class="panel-header">
+          <div>
+            <h3 class="panel-title">Live GPS Tracking</h3>
+            <p class="panel-subtitle">Real-time vehicle location</p>
+          </div>
+        </div>
+        <div class="map-container">
+          <div class="map-grid"></div>
+          <svg class="map-route" viewBox="0 0 700 280">
+            <path class="route-line route-line--complete" d="M50,220 Q150,180 200,160 T350,100"/>
+            <path class="route-line route-line--remaining" d="M350,100 T500,130 T650,80"/>
+          </svg>
+          <div class="map-start"></div>
+          <div class="vehicle-marker">
+            <div class="vehicle-pulse"></div>
+            <div class="vehicle-dot">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="vehicle-label">Vehicle #001</div>
+          </div>
+          <div class="map-info">
+            <div class="map-info-box">
+              <p class="map-info-label">Latitude</p>
+              <p class="map-info-value">40.7128° N</p>
+            </div>
+            <div class="map-info-box">
+              <p class="map-info-label">Longitude</p>
+              <p class="map-info-value">74.0060° W</p>
+            </div>
+          </div>
+          <div class="map-speed">
+            <p class="map-speed-label">Current Speed</p>
+            <p class="map-speed-value">78 km/h</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alerts -->
+    <div class="panel alerts-panel">
+      <div class="panel-glow panel-glow--bl"></div>
+      <div class="panel-header">
+        <div class="alerts-icon">
+          <svg viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span class="alert-count">4</span>
+        </div>
+        <div>
+          <h3 class="panel-title">Active Alerts</h3>
+          <p class="panel-subtitle">Real-time vehicle warnings</p>
+        </div>
+        <button class="alerts-clear">Clear All</button>
+      </div>
+      <div class="alerts-list">
+        <div class="alert-item alert-item--warning">
+          <div class="alert-icon-box">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="alert-content">
+            <p class="alert-message">Vehicle exceeded speed limit (95 km/h in 80 km/h zone)</p>
+            <p class="alert-time">2 min ago</p>
+          </div>
+          <button class="alert-dismiss"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        </div>
+        <div class="alert-item alert-item--critical">
+          <div class="alert-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+          </div>
+          <div class="alert-content">
+            <p class="alert-message">Engine temperature critically high (105°C)</p>
+            <p class="alert-time">5 min ago</p>
+          </div>
+          <button class="alert-dismiss"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        </div>
+        <div class="alert-item alert-item--warning">
+          <div class="alert-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M3 22V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/><path d="M15 22V10a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M18 22v-6"/><path d="M3 22h12"/></svg>
+          </div>
+          <div class="alert-content">
+            <p class="alert-message">Low fuel warning - 12% remaining</p>
+            <p class="alert-time">15 min ago</p>
+          </div>
+          <button class="alert-dismiss"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        </div>
+        <div class="alert-item alert-item--warning">
+          <div class="alert-icon-box">
+            <svg viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="alert-content">
+            <p class="alert-message">RPM exceeded safe operating range</p>
+            <p class="alert-time">23 min ago</p>
+          </div>
+          <button class="alert-dismiss"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>FleetX Dashboard &copy; 2026 - Vehicle Fleet Management System</p>
+  </footer>
+</body>
+</html>
