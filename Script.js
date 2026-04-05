@@ -1,67 +1,56 @@
-let speed = 60;
-let temp = 75;
-let fuel = 80;
-
 let rawSpeedBuffer = [];
 let chartData = [];
 let chartLabels = [];
+let currentSpeed = 0;
 
-function getMockData() {
+async function getLiveData() {
+  try {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbwZFF4Ip5Ic9L4kyISzQugrWHm07W38DGK_fUIJG-iPUrExEWZw0lejUeu5H7l1-g-NdQ/exec");
+    const data = await res.json();
 
-  // smooth speed
-  speed += Math.random() * 10 - 5;
-  speed = Math.max(0, Math.min(120, speed));
+    console.log("Live Data:", data);
 
-  // realistic temperature behavior
-  temp += (speed / 100) * 2;        // increases with speed
-  temp -= Math.random() * 1.5;      // natural cooling
-  temp = Math.max(70, Math.min(110, temp));
-    
-  // realistic fuel consumption
-  fuel -= speed * 0.002; // consumption rate
-  fuel = Math.max(0, fuel);
+    currentSpeed = data.speed || 0;
 
-  return {
-    speed: Math.round(speed),
-    rpm: Math.round(speed * 50),
-    temp: Math.round(temp),
-    fuel: Math.round(fuel),
-    lat: 11.6643,
-    lng: 78.1460,
-    time: new Date().toLocaleTimeString()
-  };
+    updateUI(data);
+
+  } catch (err) {
+    console.error("Fetch error:", err);
+  }
 }
+
+setInterval(getLiveData, 2000);
 
 function updateUI(data) {
 
-  // Update values
-  document.querySelector(".speed .stat-number").innerText = data.speed;
-  document.querySelector(".rpm .stat-number").innerText = data.rpm;
-  document.querySelector(".temp .stat-number").innerText = data.temp;
-  document.querySelector(".fuel .stat-number").innerText = data.fuel;
+  const { lat, lng, speed, sat, alt, valid, time } = data;
 
-  // Update time
-  document.querySelector(".status-time").innerText = data.time;
+  document.querySelector(".map-speed-value").innerText =
+    speed ? speed + " km/h" : "--";
 
-  // Update map speed
-  document.querySelector(".map-speed-value").innerText = data.speed + " km/h";
+  document.querySelector(".speed .stat-number").innerText = speed ?? "--";
 
-  // Update GPS text
-  document.querySelectorAll(".map-info-value")[0].innerText = data.lat.toFixed(4);
-  document.querySelectorAll(".map-info-value")[1].innerText = data.lng.toFixed(4);
+  document.querySelector(".rpm .stat-number").innerText = sat ?? "--";
+  document.querySelector(".temp .stat-number").innerText = alt ?? "--";
+  document.querySelector(".fuel .stat-number").innerText = valid ? 100 : 0;
 
-  rawSpeedBuffer.push(data.speed);
+  const now = new Date();
+  document.querySelector(".status-time").innerText =
+    now.toLocaleTimeString();
 
-  // Update status colors
-  updateStatus(".speed", data.speed, 100);
-  updateStatus(".temp", data.temp, 95);
-  updateStatus(".fuel", data.fuel, 20, true);
-}
+  document.querySelectorAll(".map-info-value")[0].innerText =
+    lat ? lat.toFixed(4) : "--";
 
-function updateChart() {
-  chart.data.labels = chartLabels;
-  chart.data.datasets[0].data = chartData;
-  chart.update();
+  document.querySelectorAll(".map-info-value")[1].innerText =
+    lng ? lng.toFixed(4) : "--";
+
+  rawSpeedBuffer.push(speed || 0);
+
+  updateStatus(".speed", speed, 100);
+  updateStatus(".temp", alt, 95);
+  updateStatus(".fuel", valid ? 100 : 0, 20, true);
+
+  updateVehiclePosition(lat, lng);
 }
 
 function updateStatus(selector, value, limit, reverse = false) {
@@ -107,14 +96,8 @@ const chart = new Chart(ctx, {
     responsive: true,
     animation: false,
     scales: {
-      x: {
-        ticks: {
-          maxTicksLimit: 6
-        }
-      },
-      y: {
-        beginAtZero: true
-      }
+      x: { ticks: { maxTicksLimit: 6 } },
+      y: { beginAtZero: true }
     }
   }
 });
@@ -131,18 +114,30 @@ setInterval(() => {
 
   rawSpeedBuffer = [];
 
-  // Keep only last 60 points (30 mins)
-  if (chartData.length > 60) {
+  if (chartData.length > 20) { // keep last 20 points (~10 min)
     chartData.shift();
     chartLabels.shift();
   }
 
-  updateChart();
+  chart.update();
 
 }, 30000);
 
-// Run simulation
-setInterval(() => {
-  const data = getMockData();
-  updateUI(data);
-}, 2000);
+function updateVehiclePosition(lat, lng) {
+
+  if (!lat || !lng) return;
+
+  const marker = document.querySelector(".vehicle-marker");
+  const map = document.querySelector(".map-container");
+
+  const mapWidth = map.offsetWidth;
+  const mapHeight = map.offsetHeight;
+
+  // Normalize lat/lng into screen position
+  // (simple demo mapping — we improve later)
+  const x = ((lng % 1) * mapWidth);
+  const y = ((lat % 1) * mapHeight);
+
+  marker.style.left = x + "px";
+  marker.style.top = y + "px";
+}

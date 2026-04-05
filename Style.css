@@ -667,6 +667,11 @@ body {
     animation: routeDash 1s linear infinite;
 }
 
+.vehicle-marker {
+    position: absolute;
+    transition: all 0.5s ease;
+}
+
 @keyframes routeDash {
     to { stroke-dashoffset: -20; }
 }
